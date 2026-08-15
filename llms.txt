@@ -1,0 +1,17 @@
+# @tcbs/react-native-ondevice-ai
+
+> React Native bindings for Google LiteRT-LM 0.16.0, on-device multimodal Gemma inference, and model-file lifecycle management.
+
+Canonical AI coding instructions: ./AGENTS.md
+Project overview and usage: ./README.md
+Architecture and invariants: ./docs/ARCHITECTURE.md
+Public API map: ./docs/API.md
+Build and runtime troubleshooting: ./docs/TROUBLESHOOTING.md
+Contribution workflow: ./CONTRIBUTING.md
+Minimal consumer example: ./example/README.md
+Public TypeScript surface: ./src/index.ts
+Public types: ./src/types.ts
+
+Scope note: model weights are not bundled. YOLO and object detection are not
+part of this package. New Architecture support currently uses React Native's
+legacy-module interop and is not a TurboModule implementation.

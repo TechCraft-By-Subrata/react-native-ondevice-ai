@@ -1,0 +1,51 @@
+# Dependencies
+node_modules/
+
+# Generated JavaScript and declarations
+lib/
+
+# Swift Package Manager
+.build/
+.swiftpm/
+Package.resolved
+
+# Android / Gradle
+.gradle/
+android/.gradle/
+android/build/
+android/**/build/
+android/.cxx/
+android/local.properties
+*.apk
+*.aab
+
+# Apple / CocoaPods / Xcode
+ios/Pods/
+ios/build/
+DerivedData/
+*.xcuserstate
+xcuserdata/
+
+# Tests and tooling
+coverage/
+*.log
+*.tgz
+.eslintcache
+
+# Local configuration and credentials
+.env
+.env.*
+!.env.example
+*.keystore
+*.jks
+
+# Editors and operating systems
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*~
+
+# Local working notes
+ch-03.md
+ch-03-v2.md
