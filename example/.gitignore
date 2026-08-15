@@ -1,0 +1,42 @@
+# JavaScript dependencies and test output
+node_modules/
+coverage/
+*.log
+
+# Android generated and local files
+android/.gradle/
+android/.kotlin/
+android/.cxx/
+android/build/
+android/app/.cxx/
+android/app/build/
+android/local.properties
+android/keystore.properties
+android/service-account.json
+*.apk
+*.aab
+*.keystore
+*.jks
+
+# iOS generated and local files
+ios/Pods/
+ios/build/
+DerivedData/
+xcuserdata/
+*.xcuserstate
+.xcode.env.local
+
+# Bundler and local reports
+vendor/bundle/
+.bundle/
+audit-output/
+
+# Local configuration, editors, and operating systems
+.env
+.env.*
+!.env.example
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*~

@@ -1,5 +1,6 @@
-# Dependencies
+# Dependencies (package root and nested example apps)
 node_modules/
+**/node_modules/
 
 # Generated JavaScript and declarations
 lib/
@@ -11,23 +12,43 @@ Package.resolved
 
 # Android / Gradle
 .gradle/
+**/.gradle/
+**/.kotlin/
+**/.cxx/
 android/.gradle/
 android/build/
 android/**/build/
 android/.cxx/
 android/local.properties
+**/android/local.properties
+**/android/keystore.properties
+**/android/service-account.json
+**/android/build/
+**/android/app/build/
 *.apk
 *.aab
 
 # Apple / CocoaPods / Xcode
 ios/Pods/
 ios/build/
+**/ios/Pods/
+**/ios/build/
+**/DerivedData/
 DerivedData/
 *.xcuserstate
 xcuserdata/
+**/xcuserdata/
+**/.xcode.env.local
+
+# Ruby/Bundler output used by React Native iOS tooling
+**/vendor/bundle/
+.bundle/
+**/.bundle/
 
 # Tests and tooling
 coverage/
+**/coverage/
+**/audit-output/
 *.log
 *.tgz
 .eslintcache
