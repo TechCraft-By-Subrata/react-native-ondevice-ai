@@ -1521,9 +1521,8 @@ PODS:
     - ReactCommon/turbomodule/core
     - ReactNativeDependencies
     - Yoga
-  - react-native-ondevice-ai (0.1.0):
+  - react-native-ondevice-ai (1.0.0):
     - React-Core
-    - TensorFlowLiteC (~> 2.17.0)
   - react-native-safe-area-context (5.8.0):
     - hermes-engine
     - RCTRequired
@@ -2084,9 +2083,6 @@ PODS:
     - ReactCommon/turbomodule/core
     - ReactNativeDependencies
     - Yoga
-  - TensorFlowLiteC (2.17.0):
-    - TensorFlowLiteC/Core (= 2.17.0)
-  - TensorFlowLiteC/Core (2.17.0)
   - Yoga (0.0.0)
 
 DEPENDENCIES:
@@ -2181,7 +2177,6 @@ SPEC REPOS:
   trunk:
     - lottie-ios
     - MMKVCore
-    - TensorFlowLiteC
 
 EXTERNAL SOURCES:
   FBLazyVector:
@@ -2402,7 +2397,7 @@ SPEC CHECKSUMS:
   React-microtasksnativemodule: 03752e60738a797bb49f4d6cb0291dfa398099b8
   React-mutationobservernativemodule: 2e568e13c98bd185fe83266795233fa7ad2cbc19
   react-native-image-picker: 2146157d5d37a34c2063d1d2ed01081b56d0b87b
-  react-native-ondevice-ai: 97c15502155925c4c7db007392fb49bfbfb6c6ce
+  react-native-ondevice-ai: 74cf857dbabf2e7e057751d4efcf807c735fd494
   react-native-safe-area-context: c1eb308f4b36372a4de4b3bdaa8ed695ec3dd461
   React-NativeModulesApple: a4713821c9caae40ae33eef933a6e692a6f4a81d
   React-networking: b344a1a41a4729ef859123b7a234f3092761cb25
@@ -2443,7 +2438,6 @@ SPEC CHECKSUMS:
   ReactNativeFs: b95edef3b5057ec9434c3211e61f83deb6e3df16
   RNNitroSQLite: c40bc09d170a4850eb19c1a3b9279cd6ffeeb75c
   RNScreens: 51a84aa8ad2e99de8451df43f14173e540440682
-  TensorFlowLiteC: eac6d689a8d391d1b202dc59e3d9165ba64aaf73
   Yoga: fe50ab299e578f397fef753cf309c6703a4db29b
 
 PODFILE CHECKSUM: 2baa205fa2f9789347663acf270e68417325644f
