@@ -1,0 +1,54 @@
+{
+  "name": "ondeviceai",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "android": "react-native run-android",
+    "android:publish": "npm run android:version:bump && cd android && ./gradlew publishReleaseBundle && cd ..",
+    "android:version:bump": "node scripts/increment-android-version.cjs",
+    "ios": "react-native run-ios",
+    "lint": "eslint .",
+    "start": "react-native start",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@dr.pogodin/react-native-fs": "^2.39.2",
+    "@react-native/new-app-screen": "0.86.0",
+    "@react-navigation/native": "^7.3.8",
+    "@react-navigation/native-stack": "^7.17.10",
+    "@tcbs/react-native-exception-handler": "^1.0.1",
+    "@tcbs/react-native-mazic-ui": "^0.3.0",
+    "lottie-react-native": "^7.3.8",
+    "react": "19.2.3",
+    "react-native": "0.86.0",
+    "react-native-image-picker": "^8.2.1",
+    "react-native-mmkv": "4.3.2",
+    "react-native-nitro-modules": "0.35.10",
+    "react-native-nitro-sqlite": "^9.6.0",
+    "react-native-safe-area-context": "^5.5.2",
+    "react-native-screens": "^4.26.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.25.2",
+    "@babel/preset-env": "^7.25.3",
+    "@babel/runtime": "^7.25.0",
+    "@react-native-community/cli": "20.1.0",
+    "@react-native-community/cli-platform-android": "20.1.0",
+    "@react-native-community/cli-platform-ios": "20.1.0",
+    "@react-native/babel-preset": "0.86.0",
+    "@react-native/eslint-config": "0.86.0",
+    "@react-native/metro-config": "0.86.0",
+    "@react-native/typescript-config": "0.86.0",
+    "@types/jest": "^29.5.13",
+    "@types/react": "^19.2.0",
+    "@types/react-test-renderer": "^19.1.0",
+    "eslint": "^8.19.0",
+    "jest": "^29.6.3",
+    "prettier": "2.8.8",
+    "react-test-renderer": "19.2.3",
+    "typescript": "^5.8.3"
+  },
+  "engines": {
+    "node": ">= 22.11.0"
+  }
+}

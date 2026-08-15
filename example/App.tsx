@@ -1,68 +1,95 @@
-import React, {useEffect, useRef, useState} from 'react';
-import {Button, SafeAreaView, ScrollView, Text, TextInput} from 'react-native';
+import React from 'react';
+import { StatusBar } from 'react-native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 import {
-  generateText,
-  generateTextStream,
-  getLiteRTLMRuntimeInfo,
-  resetConversation,
-  unloadModel,
-  type GemmaGenerationStream,
-} from '@tcbs/react-native-ondevice-ai';
+  DarkTheme,
+  DefaultTheme,
+  NavigationContainer,
+} from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+import { ChatScreen } from './src/ChatScreen';
+import { SettingsScreen } from './src/SettingsScreen';
+import { SelectionScreen } from './src/SelectionScreen';
+import { GemmaModelManagementScreen } from './src/GemmaModelManagementScreen';
+import { SevenSegmentScreen } from './src/SevenSegmentScreen';
+import { YoloModelManagementScreen } from './src/YoloModelManagementScreen';
+import { ObjectDetectionScreen } from './src/ObjectDetectionScreen';
+import { useTcbsColorStore } from '@tcbs/react-native-mazic-ui';
+import { subraTheme } from './src/theme';
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
-  const [prompt, setPrompt] = useState('Explain on-device AI in one paragraph.');
-  const [output, setOutput] = useState('');
-  const [status, setStatus] = useState('Checking runtime…');
-  const activeStream = useRef<GemmaGenerationStream | null>(null);
+  const { currentThemeMode, setTcbsColor, themeColors } = useTcbsColorStore();
 
-  useEffect(() => {
-    getLiteRTLMRuntimeInfo()
-      .then(info => setStatus(`LiteRT-LM ${info.engineVersion}; loaded: ${info.modelLoaded}`))
-      .catch(error => setStatus(String(error)));
-    return () => {
-      void activeStream.current?.cancel();
+  React.useEffect(() => {
+    setTcbsColor(subraTheme);
+  }, [setTcbsColor]);
+
+  const navigationTheme = React.useMemo(() => {
+    const baseTheme = currentThemeMode === 'dark' ? DarkTheme : DefaultTheme;
+
+    return {
+      ...baseTheme,
+      colors: {
+        ...baseTheme.colors,
+        primary: themeColors.primaryColor ?? themeColors.themeColor,
+        background: themeColors.screenBgColor ?? baseTheme.colors.background,
+        card: themeColors.modalHeaderBgColor ?? baseTheme.colors.card,
+        text: themeColors.textPrimary ?? baseTheme.colors.text,
+        border: themeColors.borderColor ?? baseTheme.colors.border,
+      },
     };
-  }, []);
-
-  const runOnce = async () => {
-    setOutput('');
-    try {
-      const result = await generateText(prompt, {backend: 'cpu', maxTokens: 256});
-      setOutput(result.text);
-    } catch (error) {
-      setOutput(String(error));
-    }
-  };
-
-  const runStreaming = async () => {
-    setOutput('');
-    try {
-      const stream = generateTextStream(
-        prompt,
-        chunk => setOutput(previous => previous + chunk.text),
-        {backend: 'cpu', maxTokens: 256},
-      );
-      activeStream.current = stream;
-      await stream.result;
-    } catch (error) {
-      setOutput(String(error));
-    } finally {
-      activeStream.current = null;
-    }
-  };
+  }, [currentThemeMode, themeColors]);
 
   return (
-    <SafeAreaView>
-      <ScrollView contentContainerStyle={{gap: 12, padding: 20}}>
-        <Text>{status}</Text>
-        <TextInput multiline value={prompt} onChangeText={setPrompt} />
-        <Button title="Generate" onPress={() => void runOnce()} />
-        <Button title="Stream" onPress={() => void runStreaming()} />
-        <Button title="Cancel" onPress={() => void activeStream.current?.cancel()} />
-        <Button title="New conversation" onPress={() => void resetConversation()} />
-        <Button title="Unload model" onPress={() => void unloadModel()} />
-        <Text selectable>{output}</Text>
-      </ScrollView>
-    </SafeAreaView>
+    <SafeAreaProvider>
+      <NavigationContainer theme={navigationTheme}>
+        <StatusBar
+          barStyle={
+            currentThemeMode === 'dark' ? 'light-content' : 'dark-content'
+          }
+          backgroundColor={themeColors.screenBgColor}
+        />
+        <Stack.Navigator initialRouteName="Selection">
+          <Stack.Screen
+            name="Selection"
+            component={SelectionScreen}
+            options={{ headerShown: false, title: 'Home' }}
+          />
+          <Stack.Screen
+            name="Chat"
+            component={ChatScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Settings"
+            component={SettingsScreen}
+            options={{ title: 'Settings' }}
+          />
+          <Stack.Screen
+            name="SevenSegment"
+            component={SevenSegmentScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="ObjectDetection"
+            component={ObjectDetectionScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="ModelManagement"
+            component={GemmaModelManagementScreen}
+            options={{ title: 'Model Management' }}
+          />
+          <Stack.Screen
+            name="YoloModelManagement"
+            component={YoloModelManagementScreen}
+            options={{ title: 'YOLO Model Management' }}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </SafeAreaProvider>
   );
 }

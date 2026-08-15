@@ -1,0 +1,53 @@
+import React, { createContext, useContext, useState, useCallback, useEffect, useRef } from 'react';
+import { Alert, Platform } from 'react-native';
+import {
+  checkStorage,
+  exportModelToDownloads,
+  finalizeModelDownload,
+  getCurrentNetworkClass,
+  getDownloadStatus,
+  getExportedModelInfo,
+  getModelFileInfo,
+  importModelFromDownloads,
+  openExportedModelInFiles,
+  startModelDownload,
+  subscribeTransferProgress,
+} from '@tcbs/react-native-gemma';
+
+const GEMMA_MODEL_URL = 'https://huggingface.co/litert-community/gemma-4-E2B-it-litert-lm/resolve/main/gemma-4-E2B-it.litertlm';
+const GEMMA_REQUIRED_MODEL_BYTES = 2581242684;
+const GEMMA_SAFETY_BUFFER_BYTES = 250 * 1024 * 1024;
+const GEMMA_EXPORT_DIR_NAME = 'SubraAI';
+const GEMMA_TRANSFER_FILE_NAME = 'subra_ai_brain.litertlm';
+const GEMMA_LEGACY_IOS_MODEL_FILE_NAME = 'gemma-4-E2B-it.litertlm';
+const GEMMA_STALLED_DOWNLOAD_TIMEOUT_MS = 25000;
+const DEFAULT_GEMMA_MODEL_FILE_NAME = 'gemma-4.litertlm';
+
+type DownloadState = {
+  statusText: string;
+  progressText: string;
+  sizeText: string;
+  downloadNetworkLabel: string;
+<0xA0> <0xC2><0xA0> modelReady: boolean;
+<0xC2><0xA0> <0xC2><0xA0> exportedModelInfo: { exists: boolean; path: string } | null;
+<0xC2><0xA0> <0xC2><0xA0> isChecking: boolean;
+<0xC2><0xA0> <0xC2><0xA0> isDownloading: boolean;
+<0xC2><0xA0> <0xC2><0xA0> isExporting: boolean;
+<0xC2><0xA0> <0xC2><0xA0> isImporting: boolean;
+};
+
+interface DownloadContextType {
+  state: DownloadState;
+  startDownload: () => Promise<void>;
+  exportModel: () => Promise<void>;
+  importModel: () => Promise<void>;
+  viewExportedFile: () => Promise<void>;
+}
+
+const DownloadContext = createContext<DownloadContextType | undefined>(undefined);
+
+export const DownloadProvider: React.FC<{ children: React.ReactReactNode }> = ({ children }) => {
+  // This is going to be messy if I don't use a single block.
+  // Let me restart with a clean, complete file implementation.
+  return null;
+};
