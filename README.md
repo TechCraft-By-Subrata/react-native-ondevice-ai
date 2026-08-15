@@ -1,3 +1,5 @@
+![React Native On-Device AI — private multimodal AI for iOS and Android](docs/assets/readme-hero.png)
+
 # @tcbs/react-native-ondevice-ai
 
 Production-oriented React Native bindings for Google LiteRT-LM 0.16.0, generic
