@@ -6,6 +6,8 @@ All notable changes to this package are documented here.
 
 - Serialized iOS LiteRT-LM inference, streaming, benchmark, reset, unload, and
   runtime-state access around the shared engine and conversation.
+- Guarded iOS against LiteRT-LM 0.16.0's native sampler trap when temperature
+  is exactly zero.
 - Changed automatic tool calling to the safe default of `false` on Android and
   iOS; model-emitted tool calls remain available for app-side dispatch.
 - Exported `SystemLanguageModelAvailability` from the package root.

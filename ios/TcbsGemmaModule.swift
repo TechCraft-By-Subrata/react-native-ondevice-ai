@@ -1041,7 +1041,10 @@ class TcbsGemmaModule: RCTEventEmitter, URLSessionDownloadDelegate, UIDocumentPi
         let samplerConfig = try SamplerConfig(
           topK: intOption(options, "topK") ?? 40,
           topP: floatOption(options, "topP") ?? 0.95,
-          temperature: floatOption(options, "temperature") ?? 0.7,
+          // LiteRT-LM 0.16.0's iOS C sampler setter traps on exactly zero
+          // instead of returning an error. Preserve effectively greedy
+          // sampling while preventing an unrecoverable native SIGTRAP.
+          temperature: max(floatOption(options, "temperature") ?? 0.7, 0.0001),
           seed: intOption(options, "seed") ?? 0
         )
         let systemPrompt = (options["systemPrompt"] as? String)?.trimmingCharacters(in: .whitespacesAndNewlines)

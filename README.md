@@ -218,6 +218,9 @@ console.log(selectedAudio.uri, selectedAudio.durationMs);
 ```
 
 Inference defaults are `temperature: 0.7`, `topK: 40`, and `topP: 0.95`.
+On iOS, LiteRT-LM 0.16.0 cannot safely accept an exact zero temperature; the
+native bridge clamps zero to `0.0001`, which remains effectively deterministic
+when used with `topK: 1`.
 Changing engine or conversation options recreates the cached native
 conversation. `maxTokens` limits output and `seed` controls the sampler. Empty text
 prompts resolve to `{ text: '' }`. Image inference requires a local readable

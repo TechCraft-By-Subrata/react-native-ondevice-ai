@@ -43,6 +43,13 @@ If the crash appears only when `suppressTokens` is configured on Android,
 remove the option. LiteRT-LM 0.16.0 has an upstream JNI abort path; this package
 intentionally does not forward it on Android.
 
+## SIGTRAP in `Engine.createConversation` on iOS
+
+LiteRT-LM 0.16.0's iOS sampler setter can trap when `temperature` is exactly
+zero. This package clamps it to `0.0001`; use `topK: 1` for effectively greedy
+generation. A crash report whose triggered frame is
+`Engine.createConversation(with:)` confirms this path.
+
 ## Out of memory or termination
 
 Do not run generations concurrently. Keep unused vision/audio backends
