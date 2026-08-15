@@ -108,12 +108,10 @@ test('iOS serializes access to the shared LiteRT-LM engine', async () => {
   assert.doesNotMatch(ios, /automaticToolCalling:.*\?\? true/);
 });
 
-test('iOS guards the upstream zero-temperature sampler trap', async () => {
+test('iOS guards the upstream Int32 sampler-seed trap', async () => {
   const ios = await readFile(new URL('ios/TcbsGemmaModule.swift', root), 'utf8');
-  assert.match(
-    ios,
-    /temperature: max\(floatOption\(options, "temperature"\).*0\.0001\)/,
-  );
+  assert.match(ios, /seed: normalizedSamplerSeed\(options\)/);
+  assert.match(ios, /seed % upperBound/);
 });
 
 test('obsolete SwiftPM integration files are absent', async () => {

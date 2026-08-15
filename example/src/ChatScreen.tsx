@@ -101,11 +101,10 @@ async function transcribeAudioPart(
     {
       // A unique seed forces the native bridge to create a clean conversation
       // instead of reusing chat context. Sampling remains deterministic.
-      seed: Date.now() + partIndex,
-      // LiteRT-LM 0.16.0 on iOS traps while creating a conversation when the
-      // native sampler receives exactly zero. This remains effectively greedy
-      // with topK: 1 while avoiding the upstream native assertion.
-      temperature: 0.0001,
+      // Google's iOS wrapper converts the seed to Int32. Keep the timestamp
+      // unique without overflowing that native conversion.
+      seed: (Date.now() + partIndex) % 2147483647,
+      temperature: 0,
       topK: 1,
       topP: 1,
     },

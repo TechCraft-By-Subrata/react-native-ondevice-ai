@@ -2,12 +2,20 @@
 
 All notable changes to this package are documented here.
 
+## 1.0.2
+
+- Normalized iOS sampler seeds to the signed 32-bit range required by Google's
+  LiteRT-LM 0.16.0 Swift wrapper, preventing native overflow traps from values
+  such as JavaScript timestamps.
+- Restored exact-zero temperature support after register-level analysis showed
+  the reported crash was caused by seed conversion, not temperature.
+
 ## 1.0.1
 
 - Serialized iOS LiteRT-LM inference, streaming, benchmark, reset, unload, and
   runtime-state access around the shared engine and conversation.
-- Guarded iOS against LiteRT-LM 0.16.0's native sampler trap when temperature
-  is exactly zero.
+- Guarded iOS sampler configuration against exact-zero temperatures. This was
+  superseded by the corrected seed-overflow diagnosis in 1.0.2.
 - Changed automatic tool calling to the safe default of `false` on Android and
   iOS; model-emitted tool calls remain available for app-side dispatch.
 - Exported `SystemLanguageModelAvailability` from the package root.

@@ -1521,7 +1521,7 @@ PODS:
     - ReactCommon/turbomodule/core
     - ReactNativeDependencies
     - Yoga
-  - react-native-ondevice-ai (1.0.0):
+  - react-native-ondevice-ai (1.0.1):
     - React-Core
   - react-native-safe-area-context (5.8.0):
     - hermes-engine
@@ -2397,7 +2397,7 @@ SPEC CHECKSUMS:
   React-microtasksnativemodule: 03752e60738a797bb49f4d6cb0291dfa398099b8
   React-mutationobservernativemodule: 2e568e13c98bd185fe83266795233fa7ad2cbc19
   react-native-image-picker: 2146157d5d37a34c2063d1d2ed01081b56d0b87b
-  react-native-ondevice-ai: 74cf857dbabf2e7e057751d4efcf807c735fd494
+  react-native-ondevice-ai: e371f3652c6a7f55a5bd09025aeba59fdf101598
   react-native-safe-area-context: c1eb308f4b36372a4de4b3bdaa8ed695ec3dd461
   React-NativeModulesApple: a4713821c9caae40ae33eef933a6e692a6f4a81d
   React-networking: b344a1a41a4729ef859123b7a234f3092761cb25

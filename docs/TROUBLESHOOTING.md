@@ -45,10 +45,12 @@ intentionally does not forward it on Android.
 
 ## SIGTRAP in `Engine.createConversation` on iOS
 
-LiteRT-LM 0.16.0's iOS sampler setter can trap when `temperature` is exactly
-zero. This package clamps it to `0.0001`; use `topK: 1` for effectively greedy
-generation. A crash report whose triggered frame is
-`Engine.createConversation(with:)` confirms this path.
+Google's LiteRT-LM 0.16.0 Swift wrapper converts the sampler seed using
+`Int32(seed)`. Values outside the signed 32-bit range, including an unmodified
+JavaScript `Date.now()`, cause an unrecoverable overflow trap while creating the
+conversation. This package normalizes oversized seeds before calling Google's
+wrapper. A crash report may still mention the preceding temperature setter;
+inspect the crashing thread's register values for an oversized seed.
 
 ## Out of memory or termination
 
