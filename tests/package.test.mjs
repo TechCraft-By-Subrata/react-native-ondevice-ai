@@ -61,7 +61,6 @@ test('AI-assisted development entry points are present and publishable', async (
     'CONTRIBUTING.md',
     'llms.txt',
     'docs',
-    'example',
   ]) {
     assert.ok(pkg.files.includes(path), `${path} must be included in npm files`);
   }

@@ -8,7 +8,6 @@ Architecture and invariants: ./docs/ARCHITECTURE.md
 Public API map: ./docs/API.md
 Build and runtime troubleshooting: ./docs/TROUBLESHOOTING.md
 Contribution workflow: ./CONTRIBUTING.md
-Minimal consumer example: ./example/README.md
 Public TypeScript surface: ./src/index.ts
 Public types: ./src/types.ts
 

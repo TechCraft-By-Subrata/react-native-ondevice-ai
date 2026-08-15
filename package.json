@@ -29,7 +29,6 @@
     "CONTRIBUTING.md",
     "llms.txt",
     "docs",
-    "example",
     "README.md",
     "CHANGELOG.md",
     "THIRD_PARTY_NOTICES.md",
@@ -44,6 +43,10 @@
     "llm"
   ],
   "license": "MIT",
+  "author": {
+    "name": "Subrata Kumar Das",
+    "url": "https://subraatakumar.com/"
+  },
   "homepage": "https://github.com/TechCraft-By-Subrata/react-native-ondevice-ai#readme",
   "repository": {
     "type": "git",

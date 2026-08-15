@@ -37,7 +37,6 @@ current behavior and update the documentation in the same change.
 | `ios/vendor/CLiteRTLM.xcframework` | Official Google binary artifact |
 | `tests/` | Package-contract tests |
 | `scripts/` | Build, clean, and package verification |
-| `example/` | Minimal consumer code; not a standalone app |
 
 Generated paths such as `lib/`, `node_modules/`, `.build/`, `android/build/`,
 and `ios/Pods/` must not be edited or committed.

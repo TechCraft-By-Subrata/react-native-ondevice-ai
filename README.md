@@ -37,8 +37,7 @@ This repository is prepared for AI-assisted coding. Start with
 agents. Supporting context is split into
 [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md),
 [`docs/API.md`](docs/API.md), and
-[`docs/TROUBLESHOOTING.md`](docs/TROUBLESHOOTING.md). A small consumer example
-lives in [`example/`](example/).
+[`docs/TROUBLESHOOTING.md`](docs/TROUBLESHOOTING.md).
 
 `CLAUDE.md`, `.github/copilot-instructions.md`, and `llms.txt` point tools to
 the same sources so that project rules do not drift between assistants.
@@ -588,3 +587,7 @@ Also install the resulting `.tgz` in a clean React Native example application,
 build Android and iOS release configurations, and run download, Gemma text/image
 generation, cancellation/restoration, and import/export on physical devices.
 Do not publish when any of those checks are skipped.
+
+## Developer
+
+Created and maintained by [Subrata Kumar Das](https://subraatakumar.com/).
